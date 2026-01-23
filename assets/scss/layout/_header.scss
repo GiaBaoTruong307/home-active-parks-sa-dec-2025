@@ -1,0 +1,39 @@
+.header-inside {
+  display: flex;
+  padding: 16px 0px;
+  justify-content: space-between;
+  align-items: center;
+  background: $Text-Light;
+  backdrop-filter: blur(8px);
+
+  .logo img {
+    width: 47px;
+    height: 68px;
+    aspect-ratio: 47/68;
+  }
+
+  .main-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+
+    li {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 26px;
+      text-transform: capitalize;
+
+      a {
+        text-decoration: none;
+        padding-bottom: 5px;
+        color: $Text-Primary;
+
+        &:hover {
+          color: $Primary;
+          border-bottom: 2px solid $Primary;
+        }
+      }
+    }
+  }
+}
