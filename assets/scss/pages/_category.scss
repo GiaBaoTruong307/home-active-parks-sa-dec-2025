@@ -1,0 +1,81 @@
+.category-page {
+  background: #f6f7fb;
+}
+
+/* ================= HERO ================= */
+.category-hero {
+  padding: 100px 0 80px;
+  background: linear-gradient(180deg, #0c1050, #14196b);
+  color: #fff;
+
+  .container {
+    max-width: 860px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #d6d9ff;
+  }
+}
+
+.post-category a,
+.post-meta .category a {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  background: #eef0ff;
+  color: #4f5dff;
+  text-decoration: none;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: #4f5dff;
+    color: #fff;
+  }
+}
+
+/* ================= POSTS ================= */
+.category-posts {
+  padding: 80px 0;
+
+  .container {
+    max-width: 1100px;
+    padding: 0 20px;
+  }
+}
+
+/* reuse blog-grid & blog-card */
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .category-hero {
+    padding: 80px 0 60px;
+
+    .title {
+      font-size: 32px;
+    }
+  }
+}

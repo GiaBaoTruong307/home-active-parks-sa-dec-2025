@@ -1,12 +1,20 @@
-@import "abstracts/variables";
-@import "abstracts/mixins";
+@use "abstracts/variables";
+@use "abstracts/breakpoints";
+@use "abstracts/mixins";
 
-@import "base/reset";
-@import "base/fonts";
-@import "base/typography";
+@use "base/reset";
+@use "base/fonts";
+@use "base/typography";
 
-@import "layout/header";
+@use "layout/header";
+@use "layout/footer";
 
-@import "components/button";
+@use "components/button";
+@use "components/search-popup";
 
-@import "pages/home";
+@use "pages/home";
+@use "pages/about";
+@use "pages/privacy";
+@use "pages/blog";
+@use "pages/blog-detail";
+@use "pages/category";

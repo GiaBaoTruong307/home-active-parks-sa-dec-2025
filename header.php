@@ -34,8 +34,14 @@
                 ])
                 ?>
 
-                <!-- MENU ICON -->
-                <img class="search-icon" src="<?php echo get_template_directory_uri(); ?>/assets/icons/search-icon.svg" alt="Search Icon">
+                <!-- RIGHT ICON -->
+                <div class="search-container">
+                    <img class="search-icon" src="<?php echo get_template_directory_uri(); ?>/assets/icons/search-icon.svg" alt="Search Icon">
+                    <div class="toggleSearchBox">
+                        <input type="text" class="search-box" placeholder="Search...">
+                        <img class="clear" src="<?php echo get_template_directory_uri(); ?>/assets/icons/clear-icon.svg" alt="Clear Icon">
+                    </div>
+                </div>
             </div>
         </div>
     </header>

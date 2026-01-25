@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "breakpoints" as *;
+
+// Flexbox mixin
 @mixin flex(
   $justify: flex-start,
   $align: stretch,
@@ -9,4 +13,13 @@
   align-items: $align;
   flex-direction: $direction;
   flex-wrap: $wrap;
+}
+
+// Media query mixin
+@mixin respond($device) {
+  @if map.has-key($breakpoints, $device) {
+    @media (max-width: map.get($breakpoints, $device)) {
+      @content;
+    }
+  }
 }

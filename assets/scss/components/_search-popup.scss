@@ -1,0 +1,74 @@
+@use "../abstracts/variables" as *;
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .search-icon {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .toggleSearchBox {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 12px;
+
+    width: 300px;
+    padding: 16px;
+    border-radius: 12px;
+
+    background: $Text-Light;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.3s ease;
+
+    &.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 8px 44px 8px 16px;
+      border-radius: 80px;
+      border: 1px solid $Line;
+      background: $Light-Grey;
+      outline: none;
+
+      font-family: $Body-Font;
+      font-size: 14px;
+      font-weight: 400;
+
+      &::placeholder {
+        font-family: $Body-Font;
+        font-size: 14px;
+        font-weight: 400;
+        color: $Text-Muted;
+      }
+    }
+
+    .clear {
+      position: absolute;
+      top: 50%;
+      right: 28px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-50%) scale(1.1);
+      }
+    }
+  }
+}

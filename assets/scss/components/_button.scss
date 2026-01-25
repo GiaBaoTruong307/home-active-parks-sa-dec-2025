@@ -1,3 +1,6 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
 .right-btn {
   display: flex;
   padding: 16px 20px;
@@ -9,6 +12,11 @@
   background-color: transparent;
   transition: all 0.2s ease;
   font-weight: 600;
+
+  @include respond(mobile) {
+    order: 3;
+    width: 100%;
+  }
 
   &:hover {
     background-color: $Primary;

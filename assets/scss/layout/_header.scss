@@ -1,3 +1,6 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
 .header-inside {
   display: flex;
   padding: 16px 0px;
@@ -18,6 +21,10 @@
     gap: 40px;
     list-style: none;
 
+    @include respond(mobile) {
+      display: none;
+    }
+
     li {
       font-size: 16px;
       font-weight: 600;
@@ -35,5 +42,179 @@
         }
       }
     }
+  }
+
+  /*-------- POPUP MENU MOBILE --------*/
+  .toogleMenuMobile {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    transition: height 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .toogleMenuMobile.open {
+    display: block;
+    height: calc(100vh - 64px);
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .toogleMenuMobile ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    list-style: none;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+
+  .toogleMenuMobile ul li {
+    padding: 0;
+    display: block;
+    text-align: left;
+    width: 100%;
+    border-bottom: 1px solid rgba(231, 231, 231, 0.5);
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInLeft 0.4s ease forwards;
+    transition: all 0.3s ease;
+  }
+
+  .toogleMenuMobile ul li:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .toogleMenuMobile ul li:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .toogleMenuMobile ul li:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .toogleMenuMobile ul li:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .toogleMenuMobile ul li:last-child {
+    border-bottom: none;
+  }
+
+  .toogleMenuMobile ul li:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(36, 71, 245, 0.08) 0%,
+      transparent 100%
+    );
+    transform: translateX(8px);
+  }
+
+  .toogleMenuMobile ul li:active {
+    background: linear-gradient(
+      90deg,
+      rgba(36, 71, 245, 0.12) 0%,
+      transparent 100%
+    );
+  }
+
+  .toogleMenuMobile ul li a {
+    text-decoration: none;
+    color: var(--Text-Primary);
+    font-family: "Roboto Serif";
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    padding: 20px 28px;
+    width: 100%;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .toogleMenuMobile ul li a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0;
+    background: linear-gradient(180deg, var(--Primary) 0%, #1a35c2 100%);
+    border-radius: 0 4px 4px 0;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .toogleMenuMobile ul li a:hover::before {
+    height: 70%;
+  }
+
+  .toogleMenuMobile ul li a:hover {
+    color: var(--Primary);
+    padding-left: 36px;
+  }
+
+  .toogleMenuMobile ul li a::after {
+    content: "\f054";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 12px;
+    margin-left: auto;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .toogleMenuMobile ul li a:hover::after {
+    opacity: 0.6;
+    transform: translateX(0);
+  }
+
+  /* Overlay effect */
+  .toogleMenuMobile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at top center,
+      rgba(36, 71, 245, 0.1) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .menu-icon {
+    display: none;
   }
 }
