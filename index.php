@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    This is the index page
+    This is index.page
 </main>
 
 <?php get_footer(); ?>

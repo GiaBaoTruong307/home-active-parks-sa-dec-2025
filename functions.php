@@ -1,80 +1,29 @@
 <?php
-// Tile Tag Support
-add_theme_support('title-tag');
-// Thumbnail Support
-add_theme_support('post-thumbnails');
-// Custom Logo
-add_action('after_setup_theme', function () {
+
+// Enqueue Styles and Scripts
+function add_theme_scripts()
+{
+    wp_enqueue_style('main-styles', get_theme_file_uri('/assets/css/main.css'));
+    wp_enqueue_script('main-js', get_theme_file_uri('/assets/js/main.js'), array('jquery'), '1.0', true); // true for add script in footer
+}
+add_action('wp_enqueue_scripts', 'add_theme_scripts');
+
+// Theme Support
+function my_theme_setup()
+{
+    // Add support for custom logo
     add_theme_support('custom-logo', [
         'height'      => 100,
         'width'       => 300,
         'flex-height' => true,
         'flex-width'  => true,
     ]);
-
-    register_nav_menus([
-        'main-menu' => __('Main Menu', 'my_theme'),
-        'footer-menu' => __('Footer Menu', 'my_theme'),
-    ]);
-});
-
-// Enqueue Styles and Scripts
-function my_theme_enqueue_assets()
-{
-    $theme_uri  = get_template_directory_uri();
-    $theme_path = get_template_directory();
-
-    wp_enqueue_style(
-        'my-theme-style',
-        $theme_uri . '/assets/css/main.css',
-        [],
-        filemtime($theme_path . '/assets/css/main.css')
-    );
-
-    wp_enqueue_style(
-        'slick-css',
-        'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css'
-    );
-
-    wp_enqueue_style(
-        'slick-theme-css',
-        'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css',
-        ['slick-css']
-    );
-
-    wp_enqueue_script(
-        'slick-js',
-        'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
-        ['jquery'],
-        '1.8.1',
-        true
-    );
-
-    wp_enqueue_script(
-        'main-js',
-        $theme_uri . '/assets/js/main.js',
-        ['jquery', 'slick-js'],
-        filemtime($theme_path . '/assets/js/main.js'),
-        true
-    );
+    // Add support for dynamic title tag
+    add_theme_support('title-tag');
+    // Add support for post thumbnails
+    add_theme_support('post-thumbnails');
+    // Register navigation menus
+    register_nav_menu('headerMenu', 'Header Menu');
+    register_nav_menu('footerMenu', 'Footer Menu');
 }
-add_action('wp_enqueue_scripts', 'my_theme_enqueue_assets');
-
-// Allow SVG upload
-function allow_svg_upload($mimes)
-{
-    $mimes['svg'] = 'image/svg+xml';
-    return $mimes;
-}
-add_filter('upload_mimes', 'allow_svg_upload');
-
-// ACF Options Page for Footer Settings
-if (function_exists('acf_add_options_page')) {
-    acf_add_options_page([
-        'page_title' => 'Footer Settings',
-        'menu_title' => 'Footer',
-        'menu_slug'  => 'footer-settings',
-        'capability' => 'edit_posts',
-        'redirect'   => false
-    ]);
-}
+add_action('after_setup_theme', 'my_theme_setup');

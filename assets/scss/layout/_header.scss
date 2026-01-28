@@ -9,13 +9,25 @@
   background: $Text-Light;
   backdrop-filter: blur(8px);
 
-  .logo img {
+  @include respond(mobile) {
+    padding: 12px 20px;
+  }
+
+  // LOGO
+  .header-logo img {
     width: 47px;
     height: 68px;
     aspect-ratio: 47/68;
+
+    @include respond(mobile) {
+      width: 28px;
+      height: 40px;
+      aspect-ratio: 7/10;
+    }
   }
 
-  .main-nav ul {
+  // NAVIGATION MENU
+  .header-navigation ul {
     display: flex;
     align-items: center;
     gap: 40px;
@@ -25,196 +37,110 @@
       display: none;
     }
 
-    li {
-      font-size: 16px;
+    li a {
+      text-decoration: none;
       font-weight: 600;
-      line-height: 26px;
-      text-transform: capitalize;
+      color: $Text-Primary;
+      padding-bottom: 5px;
+      &:hover {
+        color: $Primary;
+        border-bottom: 2px solid $Primary;
+      }
+    }
+  }
 
-      a {
-        text-decoration: none;
-        padding-bottom: 5px;
-        color: $Text-Primary;
+  // SEARCH CONTAINER
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
 
-        &:hover {
-          color: $Primary;
-          border-bottom: 2px solid $Primary;
+    @include respond(mobile) {
+      display: none;
+    }
+
+    .search-icon {
+      cursor: pointer;
+      transition: filter 0.2s;
+      &:hover {
+        filter: brightness(0.8);
+      }
+
+      @include respond(mobile) {
+        display: none;
+      }
+    }
+
+    .toggleSearchBox {
+      display: none;
+      position: absolute;
+      top: 120%;
+      right: 0;
+      width: 300px;
+      padding: 16px;
+      border-radius: 12px;
+      background: $Text-Light;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+
+      &.open,
+      &.active {
+        display: block;
+        animation: slideDown 0.3s ease forwards;
+      }
+
+      @keyframes slideDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-10px) scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .search-box {
+        width: 100%;
+        padding: 8px 16px;
+        border-radius: 80px;
+        border: 1px solid $Line;
+        background: $Light-Grey;
+        outline: none;
+        font-family: "Roboto Serif", serif;
+        font-size: 14px;
+        font-weight: 400;
+        transition: border 0.2s;
+        &::placeholder {
+          font-family: "Roboto Serif", serif;
+          font-size: 14px;
+          font-weight: 400;
+          color: #aaa;
+        }
+        &:focus {
+          border: 1.5px solid $Primary;
+          background: $Text-Light;
         }
       }
     }
   }
 
-  /*-------- POPUP MENU MOBILE --------*/
-  .toogleMenuMobile {
-    display: none;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    z-index: 999;
-    transition: height 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
+  // MOBILE MENU CONTAINER
+  .menu-container {
+    .menu-icon {
+      display: none;
 
-  .toogleMenuMobile.open {
-    display: block;
-    height: calc(100vh - 64px);
-    animation: fadeIn 0.3s ease forwards;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
+      @include respond(mobile) {
+        display: block;
+        cursor: pointer;
+      }
     }
-    to {
-      opacity: 1;
+
+    .toggleMenuMobile {
+      display: none;
+      &.open {
+        display: block;
+      }
     }
-  }
-
-  .toogleMenuMobile ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    list-style: none;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    border-radius: 0 0 24px 24px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-  }
-
-  .toogleMenuMobile ul li {
-    padding: 0;
-    display: block;
-    text-align: left;
-    width: 100%;
-    border-bottom: 1px solid rgba(231, 231, 231, 0.5);
-    opacity: 0;
-    transform: translateX(-20px);
-    animation: slideInLeft 0.4s ease forwards;
-    transition: all 0.3s ease;
-  }
-
-  .toogleMenuMobile ul li:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-
-  .toogleMenuMobile ul li:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .toogleMenuMobile ul li:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-
-  .toogleMenuMobile ul li:nth-child(4) {
-    animation-delay: 0.4s;
-  }
-
-  @keyframes slideInLeft {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .toogleMenuMobile ul li:last-child {
-    border-bottom: none;
-  }
-
-  .toogleMenuMobile ul li:hover {
-    background: linear-gradient(
-      90deg,
-      rgba(36, 71, 245, 0.08) 0%,
-      transparent 100%
-    );
-    transform: translateX(8px);
-  }
-
-  .toogleMenuMobile ul li:active {
-    background: linear-gradient(
-      90deg,
-      rgba(36, 71, 245, 0.12) 0%,
-      transparent 100%
-    );
-  }
-
-  .toogleMenuMobile ul li a {
-    text-decoration: none;
-    color: var(--Text-Primary);
-    font-family: "Roboto Serif";
-    font-size: 16px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    padding: 20px 28px;
-    width: 100%;
-    position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .toogleMenuMobile ul li a::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 0;
-    background: linear-gradient(180deg, var(--Primary) 0%, #1a35c2 100%);
-    border-radius: 0 4px 4px 0;
-    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .toogleMenuMobile ul li a:hover::before {
-    height: 70%;
-  }
-
-  .toogleMenuMobile ul li a:hover {
-    color: var(--Primary);
-    padding-left: 36px;
-  }
-
-  .toogleMenuMobile ul li a::after {
-    content: "\f054";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    font-size: 12px;
-    margin-left: auto;
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: all 0.3s ease;
-  }
-
-  .toogleMenuMobile ul li a:hover::after {
-    opacity: 0.6;
-    transform: translateX(0);
-  }
-
-  /* Overlay effect */
-  .toogleMenuMobile::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-      circle at top center,
-      rgba(36, 71, 245, 0.1) 0%,
-      transparent 70%
-    );
-    pointer-events: none;
-  }
-
-  .menu-icon {
-    display: none;
   }
 }
