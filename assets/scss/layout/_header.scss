@@ -10,7 +10,7 @@
   backdrop-filter: blur(8px);
 
   @include respond(mobile) {
-    padding: 12px 20px;
+    padding: 12px 0px;
   }
 
   // LOGO
@@ -52,8 +52,6 @@
   // SEARCH CONTAINER
   .search-container {
     position: relative;
-    display: flex;
-    align-items: center;
 
     @include respond(mobile) {
       display: none;
@@ -61,14 +59,6 @@
 
     .search-icon {
       cursor: pointer;
-      transition: filter 0.2s;
-      &:hover {
-        filter: brightness(0.8);
-      }
-
-      @include respond(mobile) {
-        display: none;
-      }
     }
 
     .toggleSearchBox {
@@ -79,12 +69,10 @@
       width: 300px;
       padding: 16px;
       border-radius: 12px;
-      background: $Text-Light;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       z-index: 10;
 
-      &.open,
-      &.active {
+      &.open {
         display: block;
         animation: slideDown 0.3s ease forwards;
       }
@@ -126,20 +114,76 @@
   }
 
   // MOBILE MENU CONTAINER
-  .menu-container {
-    .menu-icon {
-      display: none;
+  .menu-icon {
+    display: none;
 
-      @include respond(mobile) {
-        display: block;
-        cursor: pointer;
-      }
+    @include respond(mobile) {
+      display: block;
     }
+  }
+}
 
-    .toggleMenuMobile {
-      display: none;
-      &.open {
+// MENU OVERLAY
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.open {
+    display: block;
+    opacity: 1;
+  }
+}
+
+// MOBILE MENU
+.toggleMenuMobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: $Text-Light;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 21;
+  transition: 0.3s ease;
+  overflow-y: auto; // Enable vertical scrolling if content overflows
+
+  @include respond(mobile) {
+    display: block;
+  }
+
+  &.open {
+    right: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 80px 20px 20px;
+
+    li {
+      margin-bottom: 20px;
+
+      a {
         display: block;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        color: $Text-Primary;
+        padding: 12px 16px;
+        border-radius: 8px;
+        transition: all 0.2s;
+
+        &:active {
+          color: $Primary;
+          background: rgba($Primary, 0.1);
+        }
       }
     }
   }

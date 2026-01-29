@@ -23,6 +23,12 @@ html {
   }
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
 .button-font {
   color: $Text-Primary;
   font-family: "Roboto Serif";
@@ -38,24 +44,6 @@ html {
   }
 }
 
-.button-small-font {
-  color: $Text-Primary;
-  font-family: "Roboto Serif";
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22px;
-  text-transform: capitalize;
-}
-
-.button-small-font {
-  color: var(--Text-Primary);
-  font-family: "Roboto Serif";
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22px;
-  text-transform: capitalize;
-}
-
 .header-justify-between {
   display: flex;
   justify-content: space-between;
@@ -64,5 +52,33 @@ html {
 
   @include respond(mobile) {
     display: contents;
+  }
+}
+
+.right-btn {
+  display: flex;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid var(--Primary);
+  background-color: transparent;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  &:hover {
+    background-color: var(--Primary);
+    color: var(--Text-Light);
+    cursor: pointer;
+
+    img {
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
+    }
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
   }
 }

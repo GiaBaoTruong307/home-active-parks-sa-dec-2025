@@ -6,6 +6,15 @@ jQuery(document).ready(function ($) {
 
   // Popup menu mobile
   $(".menu-icon").click(function () {
-    $(".toggleMenuMobile").toggleClass("open");
+    $(".toggleMenuMobile").addClass("open");
+    $(".menu-overlay").addClass("open");
+    $("body").addClass("overflow-hidden");
+  });
+
+  // Close menu mobile when clicking outside
+  $(".menu-overlay").click(function () {
+    $(".toggleMenuMobile").removeClass("open");
+    $(".menu-overlay").removeClass("open");
+    $("body").removeClass("overflow-hidden");
   });
 });

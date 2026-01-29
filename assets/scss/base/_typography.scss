@@ -7,10 +7,15 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
+  &.overflow-hidden {
+    overflow: hidden;
+    touch-action: none; // Prevents scrolling on mobile devices
+  }
 
   @include respond(mobile) {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
   }
 }
 
@@ -78,8 +83,7 @@ h6 {
 }
 
 .heading-6 {
-  color: $Text-Primary;
-  text-align: center;
+  color: $Text-Light;
   font-size: 20px;
   font-weight: 700;
   line-height: 28px;
