@@ -1,124 +1,138 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-.header-inside {
-  display: flex;
-  padding: 16px 0px;
-  justify-content: space-between;
-  align-items: center;
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 30;
   background: $Text-Light;
-  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 32px;
 
   @include respond(mobile) {
-    padding: 12px 0px;
+    position: static;
+    margin-top: 0;
   }
 
-  // LOGO
-  .header-logo img {
-    width: 47px;
-    height: 68px;
-    aspect-ratio: 47/68;
-
-    @include respond(mobile) {
-      width: 28px;
-      height: 40px;
-      aspect-ratio: 7/10;
-    }
-  }
-
-  // NAVIGATION MENU
-  .header-navigation ul {
+  .header-inside {
     display: flex;
+    padding: 16px 0px;
+    justify-content: space-between;
     align-items: center;
-    gap: 40px;
-    list-style: none;
 
     @include respond(mobile) {
-      display: none;
+      padding: 12px 0px;
     }
 
-    li a {
-      text-decoration: none;
-      font-weight: 600;
-      color: $Text-Primary;
-      padding-bottom: 5px;
-      &:hover {
-        color: $Primary;
-        border-bottom: 2px solid $Primary;
+    // LOGO
+    .header-logo img {
+      width: 47px;
+      height: 68px;
+      aspect-ratio: 47/68;
+
+      @include respond(mobile) {
+        width: 28px;
+        height: 40px;
+        aspect-ratio: 7/10;
       }
     }
-  }
 
-  // SEARCH CONTAINER
-  .search-container {
-    position: relative;
+    // NAVIGATION MENU
+    .header-navigation ul {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
 
-    @include respond(mobile) {
-      display: none;
-    }
-
-    .search-icon {
-      cursor: pointer;
-    }
-
-    .toggleSearchBox {
-      display: none;
-      position: absolute;
-      top: 120%;
-      right: 0;
-      width: 300px;
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-
-      &.open {
-        display: block;
-        animation: slideDown 0.3s ease forwards;
+      @include respond(mobile) {
+        display: none;
       }
 
-      @keyframes slideDown {
-        0% {
-          opacity: 0;
-          transform: translateY(-10px) scale(0.95);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
+      li a {
+        text-decoration: none;
+        font-weight: 600;
+        color: $Text-Primary;
+        padding-bottom: 5px;
+        &:hover {
+          color: $Primary;
+          border-bottom: 2px solid $Primary;
         }
       }
+    }
 
-      .search-box {
-        width: 100%;
-        padding: 8px 16px;
-        border-radius: 80px;
-        border: 1px solid $Line;
-        background: $Light-Grey;
-        outline: none;
-        font-family: "Roboto Serif", serif;
-        font-size: 14px;
-        font-weight: 400;
-        transition: border 0.2s;
-        &::placeholder {
+    // SEARCH CONTAINER
+    .search-container {
+      position: relative;
+
+      @include respond(mobile) {
+        display: none;
+      }
+
+      .search-icon {
+        cursor: pointer;
+      }
+
+      .toggleSearchBox {
+        display: none;
+        position: absolute;
+        top: 120%;
+        right: 0;
+        width: 300px;
+        padding: 16px;
+        border-radius: 12px;
+        background-color: $Text-Light;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+
+        &.open {
+          display: block;
+          animation: slideDown 0.3s ease forwards;
+        }
+
+        @keyframes slideDown {
+          0% {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        .search-box {
+          width: 100%;
+          padding: 8px 16px;
+          border-radius: 80px;
+          border: 1px solid $Line;
+          background: $Light-Grey;
+          outline: none;
           font-family: "Roboto Serif", serif;
           font-size: 14px;
           font-weight: 400;
-          color: #aaa;
-        }
-        &:focus {
-          border: 1.5px solid $Primary;
-          background: $Text-Light;
+          transition: border 0.2s;
+          &::placeholder {
+            font-family: "Roboto Serif", serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #aaa;
+          }
+          &:focus {
+            border: 1.5px solid $Primary;
+            background: $Text-Light;
+          }
         }
       }
     }
-  }
 
-  // MOBILE MENU CONTAINER
-  .menu-icon {
-    display: none;
+    // MOBILE MENU CONTAINER
+    .menu-icon {
+      display: none;
 
-    @include respond(mobile) {
-      display: block;
+      @include respond(mobile) {
+        display: block;
+      }
     }
   }
 }

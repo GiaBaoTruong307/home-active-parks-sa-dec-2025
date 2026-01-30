@@ -21,12 +21,204 @@
     </section>
 
     <!-- FEATURE SERVICE SECTION -->
-    <section class="container">
-        <div class="header-justify-between">
-            <div class="content-left">
-                <h3 class="heading-3"></h3>
-                <p class="body-2"></p>
+    <section>
+        <div class="container">
+            <div class="feature-main">
+                <div class="header-justify-between">
+                    <?php
+                    $title = get_field('feature_section_title');
+                    $description = get_field('feature_section_description');
+                    $button = get_field('feature_section_button');
+                    $icon = get_template_directory_uri() . "/assets/icons/arrow-right-2.svg";
+                    ?>
+
+                    <div class="feature-text">
+                        <h3 class="heading-3"><?php echo esc_html($title); ?></h3>
+                        <p class="body-2"><?php echo esc_html($description); ?></p>
+                    </div>
+
+                    <a class="right-btn button-small-font" href="<?php echo esc_url($button['url']); ?>"><?php echo esc_html($button['title']); ?>
+                        <img src="<?php echo esc_url($icon); ?>" alt="Arrow Right">
+                    </a>
+                </div>
+
+                <div class="feature-cards">
+                    <?php
+                    $locationPosts = new WP_Query(array(
+                        'posts_per_page' => -1,
+                        'post_type' => 'location',
+                        'orderby' => 'date',
+                        'order' => 'ASC',
+                    ));
+
+                    if ($locationPosts->have_posts()) {
+                        while ($locationPosts->have_posts()) {
+                            $locationPosts->the_post();
+
+                            $image = get_the_post_thumbnail();
+                            $location = get_field('location');
+                            $title = get_the_title();
+                            $amenities = get_field('amenities');
+                            $equipment = get_field('equipment');
+                            $button = get_field('button');
+                            $iconLocation = get_template_directory_uri() . "/assets/icons/location.svg";
+                            $iconArrow = get_template_directory_uri() . "/assets/icons/arrow-right.svg"; ?>
+
+                            <article class="card">
+                                <div class="card-image">
+                                    <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                </div>
+
+                                <div class="card-content">
+                                    <p class="card-location">
+                                        <img src="<?php echo esc_url($iconLocation); ?>" alt="Location">
+                                        <span class="caption-1"><?php echo esc_html($location); ?></span>
+                                    </p>
+
+                                    <h5 class="heading-5"><?php echo esc_html($title); ?></h5>
+
+                                    <div class="card-description caption-1">
+                                        <span><?php echo esc_html($amenities); ?></span>
+                                        <span><?php echo esc_html($equipment); ?></span>
+                                    </div>
+
+                                    <div class="card-divider"></div>
+
+                                    <a class="card-btn button-small-font" href="<?php echo esc_url($button['url']); ?>">
+                                        <?php echo esc_html($button['title']); ?>
+                                        <img src="<?php echo esc_url($iconArrow); ?>" alt="Arrow Right">
+                                    </a>
+                                </div>
+                            </article>
+                    <?php }
+                    } ?>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section id="location" style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/map.png') lightgray 50% / cover no-repeat; width: 100%; height: 40vh;">
+    </section>
+
+    <!-- BENEFIT-->
+    <section class="container">
+        <?php
+        $benefit_title = get_field('benefit_section_title');
+        $benefit_description = get_field('benefit_section_description');
+        ?>
+
+        <div class="benefit-main">
+            <div class="benefit-text">
+                <h3 class="heading-3">
+                    <?php echo esc_html($benefit_title); ?>
+                </h3>
+                <p class="body-2">
+                    <?php echo esc_html($benefit_description); ?>
+                </p>
+            </div>
+
+            <ol class="benefit-list">
+                <?php
+                if (have_rows('benefit_section_benefit_list')) {
+                    while (have_rows('benefit_section_benefit_list')) {
+                        the_row();
+                        $icon = get_sub_field('icon');
+                        $title = get_sub_field('title');
+                        $description = get_sub_field('description'); ?>
+                        <li class="benefit">
+                            <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo esc_attr($icon['alt']); ?>">
+                            <div class="content">
+                                <h5 class="heading-5"><?php echo esc_html($title); ?></h5>
+                                <p><?php echo esc_html($description); ?></p>
+                            </div>
+                        </li>
+                <?php  }
+                } ?>
+            </ol>
+        </div>
+    </section>
+
+    <!-- BRAND -->
+    <section id="equipment" class="brand-main">
+        <div class="container">
+            <div class="brand-inner">
+                <div class="header-justify-between">
+                    <?php
+                    $title = get_field('brand_section_title');
+                    $button = get_field('brand_section_button');
+                    $icon = get_template_directory_uri() . "/assets/icons/arrow-right-2.svg";
+                    ?>
+
+                    <div class="feature-text">
+                        <h3 class="heading-3"><?php echo esc_html($title); ?></h3>
+                    </div>
+
+                    <a class="right-btn button-small-font" href="<?php echo esc_url($button['url']); ?>"><?php echo esc_html($button['title']); ?>
+                        <img src="<?php echo esc_url($icon); ?>" alt="Arrow Right">
+                    </a>
+                </div>
+                <ul class="brands">
+                    <?php
+                    $equipment_list = new WP_Query(array(
+                        'posts_per_page' => -1,
+                        'post_type' => 'equipment',
+                        'orderby' => 'date',
+                        'order' => 'ASC',
+                    ));
+
+                    if ($equipment_list->have_posts()) {
+                        while ($equipment_list->have_posts()) {
+                            $equipment_list->the_post();
+                            $equipment_image = get_the_post_thumbnail_url();
+                            $equipment_title = get_the_title(); ?>
+
+                            <li class="brand">
+                                <a href="<?php the_permalink(); ?>" class="brand-link"></a>
+
+                                <div class="brand-image">
+                                    <img src="<?php echo esc_url($equipment_image); ?>" alt="<?php echo esc_attr($equipment_title); ?>">
+                                </div>
+
+                                <div class="content">
+                                    <h6 class="heading-6"><?php echo esc_html($equipment_title); ?></h6>
+                                    <a style="text-decoration: none" class="caption-1" href="<?php the_permalink(); ?>">View Details</a>
+                                </div>
+                            </li>
+                    <?php }
+                    }
+                    wp_reset_postdata();
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS-->
+    <section class="container">
+        <div class="partner-inner">
+            <?php
+            $title = get_field('partners_section_title');
+            ?>
+
+            <h3 class="heading-3"><?php echo esc_html($title); ?></h3>
+            <ul class="partners">
+                <?php
+                if (have_rows('partners_section_partners_logo')) {
+                    while (have_rows('partners_section_partners_logo')) {
+                        $logo = get_sub_field('logo');
+                        the_row(); ?>
+                        <?php
+                        if (!$logo) {
+                            continue;
+                        } else { ?>
+                            <li class="partner">
+                                <img class="partner-logo" src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['alt']); ?> ">
+                            </li>
+                        <?php } ?>
+                <?php }
+                } ?>
+            </ul>
         </div>
     </section>
 </main>

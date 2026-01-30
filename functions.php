@@ -1,7 +1,8 @@
 <?php
-define('THEME_VERSION', '1.0.4');
+define('THEME_VERSION', '1.0.6');
 
 require get_template_directory() . '/inc/enqueue.php';
 require get_template_directory() . '/inc/setup.php';
-// require get_template_directory() . '/inc/cpt/event.php';
 require get_template_directory() . '/inc/acf.php';
+require get_template_directory() . '/inc/cpt/equipment.php';
+require get_template_directory() . '/inc/cpt/location.php';
