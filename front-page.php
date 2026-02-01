@@ -7,17 +7,19 @@
         $hero_image = get_field('hero_section_image');
         $hero_title = get_field('hero_section_title');
         $hero_btn = get_field('hero_section_button');
-        ?>
-        <div style="background: url('<?php echo esc_url($hero_image['url']); ?>') lightgray 50% / cover no-repeat;" class="hero-image">
-            <div class="container">
-                <div class="content">
-                    <h1 class="heading-1"><?php echo esc_html($hero_title); ?></h1>
-                    <a class="hero-btn button-font" href="<?php echo esc_url($hero_btn['url']); ?>">
-                        <?php echo esc_html($hero_btn['title']); ?>
-                    </a>
+
+        if ($hero_image || $hero_title || $hero_btn || $hero_btn['url'] || $hero_btn['title']) { ?>
+            <div style="background: url('<?php echo esc_url($hero_image['url']); ?>') lightgray 50% / cover no-repeat;" class="hero-image">
+                <div class="container">
+                    <div class="content">
+                        <h1 class="heading-1"><?php echo esc_html($hero_title); ?></h1>
+                        <a class="hero-btn button-font" href="<?php echo esc_url($hero_btn['url']); ?>">
+                            <?php echo esc_html($hero_btn['title']); ?>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
     </section>
 
     <!-- FEATURE SERVICE SECTION -->
@@ -30,16 +32,17 @@
                     $description = get_field('feature_section_description');
                     $button = get_field('feature_section_button');
                     $icon = get_template_directory_uri() . "/assets/icons/arrow-right-2.svg";
-                    ?>
 
-                    <div class="feature-text">
-                        <h3 class="heading-3"><?php echo esc_html($title); ?></h3>
-                        <p class="body-2"><?php echo esc_html($description); ?></p>
-                    </div>
+                    if ($title || $description || $button) { ?>
+                        <div class="feature-text">
+                            <h3 class="heading-3"><?php echo esc_html($title); ?></h3>
+                            <p class="body-2"><?php echo esc_html($description); ?></p>
+                        </div>
 
-                    <a class="right-btn button-small-font" href="<?php echo esc_url($button['url']); ?>"><?php echo esc_html($button['title']); ?>
-                        <img src="<?php echo esc_url($icon); ?>" alt="Arrow Right">
-                    </a>
+                        <a class="right-btn button-small-font" href="<?php echo esc_url($button['url']); ?>"><?php echo esc_html($button['title']); ?>
+                            <img src="<?php echo esc_url($icon); ?>" alt="Arrow Right">
+                        </a>
+                    <?php } ?>
                 </div>
 
                 <div class="feature-cards">
@@ -65,6 +68,8 @@
                             $iconArrow = get_template_directory_uri() . "/assets/icons/arrow-right.svg"; ?>
 
                             <article class="card">
+                                <a class="link" href="<?php the_permalink(); ?>"></a>
+
                                 <div class="card-image">
                                     <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
                                 </div>
@@ -84,14 +89,15 @@
 
                                     <div class="card-divider"></div>
 
-                                    <a class="card-btn button-small-font" href="<?php echo esc_url($button['url']); ?>">
+                                    <a href="<?php the_permalink(); ?>" class="card-btn button-small-font" href="<?php echo esc_url($button['url']); ?>">
                                         <?php echo esc_html($button['title']); ?>
                                         <img src="<?php echo esc_url($iconArrow); ?>" alt="Arrow Right">
                                     </a>
                                 </div>
                             </article>
                     <?php }
-                    } ?>
+                    }
+                    wp_reset_postdata(); ?>
                 </div>
             </div>
         </div>
@@ -103,20 +109,21 @@
 
     <!-- BENEFIT-->
     <section class="container">
-        <?php
-        $benefit_title = get_field('benefit_section_title');
-        $benefit_description = get_field('benefit_section_description');
-        ?>
-
         <div class="benefit-main">
-            <div class="benefit-text">
-                <h3 class="heading-3">
-                    <?php echo esc_html($benefit_title); ?>
-                </h3>
-                <p class="body-2">
-                    <?php echo esc_html($benefit_description); ?>
-                </p>
-            </div>
+            <?php
+            $benefit_title = get_field('benefit_section_title');
+            $benefit_description = get_field('benefit_section_description');
+
+            if ($benefit_title || $benefit_description) { ?>
+                <div class="benefit-text">
+                    <h3 class="heading-3">
+                        <?php echo esc_html($benefit_title); ?>
+                    </h3>
+                    <p class="body-2">
+                        <?php echo esc_html($benefit_description); ?>
+                    </p>
+                </div>
+            <?php } ?>
 
             <ol class="benefit-list">
                 <?php
@@ -148,15 +155,17 @@
                     $title = get_field('brand_section_title');
                     $button = get_field('brand_section_button');
                     $icon = get_template_directory_uri() . "/assets/icons/arrow-right-2.svg";
+
+                    if ($title || $button) { ?>
+                        <div class="feature-text">
+                            <h3 class="heading-3"><?php echo esc_html($title); ?></h3>
+                        </div>
+
+                        <a style="margin-top: 0px" class="right-btn button-small-font" href="<?php echo esc_url($button['url']); ?>"><?php echo esc_html($button['title']); ?>
+                            <img src="<?php echo esc_url($icon); ?>" alt="Arrow Right">
+                        </a>
+                    <?php  }
                     ?>
-
-                    <div class="feature-text">
-                        <h3 class="heading-3"><?php echo esc_html($title); ?></h3>
-                    </div>
-
-                    <a class="right-btn button-small-font" href="<?php echo esc_url($button['url']); ?>"><?php echo esc_html($button['title']); ?>
-                        <img src="<?php echo esc_url($icon); ?>" alt="Arrow Right">
-                    </a>
                 </div>
                 <ul class="brands">
                     <?php
@@ -187,8 +196,7 @@
                             </li>
                     <?php }
                     }
-                    wp_reset_postdata();
-                    ?>
+                    wp_reset_postdata();  ?>
                 </ul>
             </div>
         </div>
@@ -201,21 +209,19 @@
             $title = get_field('partners_section_title');
             ?>
 
-            <h3 class="heading-3"><?php echo esc_html($title); ?></h3>
+            <h3 class="heading-3"><?php if ($title) echo esc_html($title); ?></h3>
             <ul class="partners">
                 <?php
                 if (have_rows('partners_section_partners_logo')) {
                     while (have_rows('partners_section_partners_logo')) {
-                        $logo = get_sub_field('logo');
-                        the_row(); ?>
+                        the_row();
+                        $logo = get_sub_field('logo'); ?>
                         <?php
-                        if (!$logo) {
-                            continue;
-                        } else { ?>
+                        if ($logo) { ?>
                             <li class="partner">
                                 <img class="partner-logo" src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['alt']); ?> ">
                             </li>
-                        <?php } ?>
+                        <?php  } ?>
                 <?php }
                 } ?>
             </ul>

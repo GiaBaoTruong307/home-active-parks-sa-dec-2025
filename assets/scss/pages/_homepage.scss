@@ -144,6 +144,17 @@
           margin: 20px 0;
         }
       }
+
+      .link {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+      }
+
+      a {
+        position: relative;
+        z-index: 11;
+      }
     }
   }
 }
