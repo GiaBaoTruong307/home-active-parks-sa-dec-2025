@@ -1,0 +1,15 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.feature-image {
+  width: 100%;
+  height: 80vh;
+}
+
+.details-container {
+  max-width: 1290px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}

@@ -1,0 +1,242 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// HERO
+.about-hero {
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+
+  .container {
+    color: #fff;
+    max-width: 1200px;
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 18px;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    @include respond(mobile) {
+      h1 {
+        font-size: 32px;
+      }
+
+      p {
+        font-size: 16px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  @include respond(mobile) {
+    height: 70vh;
+    padding: 0 16px;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// INTRO
+.about-intro {
+  padding: 80px 0;
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .intro-content {
+    h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+  }
+
+  img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  @include respond(mobile) {
+    padding: 56px 0;
+
+    .intro-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .intro-content h2 {
+      font-size: 28px;
+    }
+  }
+}
+
+//  VISION & MISSION
+.about-vm {
+  background: #f7f7f7;
+  padding: 80px 0;
+
+  .vm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .vm-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+
+    img {
+      width: 60px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+  }
+
+  @include respond(mobile) {
+    padding: 56px 0;
+
+    .vm-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+}
+
+// CORE VALUES
+.about-values {
+  padding: 80px 0;
+
+  h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .value-item {
+    background: #fafafa;
+    padding: 24px;
+    border-radius: 10px;
+
+    h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  }
+
+  @include respond(mobile) {
+    padding: 56px 0;
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 28px;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+}
+
+// TEAM
+.about-team {
+  background: #111;
+  color: #fff;
+  padding: 80px 0;
+
+  h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  .team-item {
+    text-align: center;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    h4 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    span {
+      opacity: 0.8;
+      font-size: 14px;
+    }
+  }
+
+  @include respond(mobile) {
+    padding: 56px 0;
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 28px;
+    }
+
+    .team-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  }
+}

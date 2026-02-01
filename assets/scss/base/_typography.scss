@@ -7,6 +7,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
+  margin-top: 108px;
   &.overflow-hidden {
     overflow: hidden;
     touch-action: none; // Prevents scrolling on mobile devices
@@ -16,6 +17,7 @@ body {
     font-size: 12px;
     font-weight: 400;
     line-height: 20px;
+    margin-top: 0;
   }
 }
 
@@ -38,6 +40,19 @@ h6 {
   @include respond(mobile) {
     font-size: 40px;
     line-height: 48px;
+  }
+}
+
+.heading-2 {
+  color: $Text-Primary;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 68px;
+  text-transform: capitalize;
+
+  @include respond(mobile) {
+    font-size: 32px;
+    line-height: 40px;
   }
 }
 

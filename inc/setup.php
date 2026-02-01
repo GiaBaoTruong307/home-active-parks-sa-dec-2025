@@ -27,3 +27,12 @@ function allow_svg_upload($mimes)
     return $mimes;
 }
 add_filter('upload_mimes', 'allow_svg_upload');
+
+// Set posts per page for equipment archive to -1
+function setup_default_query($query)
+{
+    if (!is_admin() and is_post_type_archive('equipment') and $query->is_main_query()) {
+        $query->set('posts_per_page', -1);
+    }
+};
+add_action('pre_get_posts', 'setup_default_query'); // this function has global impact
