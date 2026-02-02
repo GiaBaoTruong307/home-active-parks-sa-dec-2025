@@ -81,7 +81,7 @@
       }
 
       &:hover {
-        background: darken($Primary, 8%);
+        background: $Primary;
         transform: translateY(-1px);
 
         img {

@@ -40,6 +40,7 @@ html {
   font-weight: 600;
   line-height: 26px;
   text-transform: capitalize;
+  text-decoration: none;
 
   @include respond(mobile) {
     font-size: 14px;

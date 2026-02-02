@@ -18,3 +18,16 @@ function location_post_type()
     ));
 }
 add_action('init', 'location_post_type');
+
+
+function location_amenities_taxonomy()
+{
+    register_taxonomy('amenities', 'location', array(
+        'label' => 'Amenities',
+        'public' => true,
+        'hierarchical' => true,
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'amenities'),
+    ));
+}
+add_action('init', 'location_amenities_taxonomy');

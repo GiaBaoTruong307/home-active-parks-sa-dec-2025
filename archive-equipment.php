@@ -5,7 +5,6 @@ get_header();
 <section class="archive-equipment">
     <div class="container">
         <ul class="equipment-grid">
-
             <?php if (have_posts()) : ?>
                 <?php while (have_posts()) : the_post();
 
@@ -13,7 +12,6 @@ get_header();
                     $image = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                 ?>
                     <li class="equipment-card">
-                        <!-- overlay link -->
                         <a href="<?php the_permalink(); ?>"
                             class="equipment-link"
                             aria-label="<?php echo esc_attr($title); ?>"></a>
@@ -23,6 +21,10 @@ get_header();
                                 <img src="<?php echo esc_url($image); ?>"
                                     alt="<?php echo esc_attr($title); ?>">
                             <?php endif; ?>
+                        </div>
+
+                        <div class="caption-1">
+                            <?php echo esc_attr($title); ?>
                         </div>
 
                         <div class="equipment-content">
