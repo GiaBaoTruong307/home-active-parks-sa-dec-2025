@@ -58,46 +58,13 @@
                         while ($locationPosts->have_posts()) {
                             $locationPosts->the_post();
 
-                            $image = get_the_post_thumbnail();
-                            $location = get_field('location');
-                            $title = get_the_title();
-                            $amenities = get_field('amenities');
-                            $equipment = get_field('equipment');
-                            $button = get_field('button');
-                            $iconLocation = get_template_directory_uri() . "/assets/icons/location.svg";
-                            $iconArrow = get_template_directory_uri() . "/assets/icons/arrow-right.svg"; ?>
-
-                            <article class="card">
-                                <a class="link" href="<?php the_permalink(); ?>"></a>
-
-                                <div class="card-image">
-                                    <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
-                                </div>
-
-                                <div class="card-content">
-                                    <p class="card-location">
-                                        <img src="<?php echo esc_url($iconLocation); ?>" alt="Location">
-                                        <span class="caption-1"><?php echo esc_html($location); ?></span>
-                                    </p>
-
-                                    <h5 class="heading-5"><?php echo esc_html($title); ?></h5>
-
-                                    <div class="card-description caption-1">
-                                        <span><?php echo esc_html($amenities); ?></span>
-                                        <span><?php echo esc_html($equipment); ?></span>
-                                    </div>
-
-                                    <div class="card-divider"></div>
-
-                                    <a href="<?php the_permalink(); ?>" class="card-btn button-small-font" href="<?php echo esc_url($button['url']); ?>">
-                                        <?php echo esc_html($button['title']); ?>
-                                        <img src="<?php echo esc_url($iconArrow); ?>" alt="Arrow Right">
-                                    </a>
-                                </div>
-                            </article>
-                    <?php }
+                            get_template_part('template-parts/components/location-card', null, array(
+                                'post_id' => get_the_ID()
+                            ));
+                        }
+                        wp_reset_postdata();
                     }
-                    wp_reset_postdata(); ?>
+                    ?>
                 </div>
             </div>
         </div>

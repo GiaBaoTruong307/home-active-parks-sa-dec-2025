@@ -1,0 +1,146 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../base/typography" as *;
+@use "../components/location-card";
+
+.equipment-image {
+  width: 100%;
+  height: 80vh;
+}
+
+.equipments-container {
+  max-width: 1290px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  @include respond(mobile) {
+    max-width: 350px;
+    margin: 40px auto;
+    gap: 28px;
+  }
+
+  .body-2 {
+    @include respond(mobile) {
+      text-align: start;
+    }
+  }
+
+  .heading-4 {
+    color: $Text-Primary;
+
+    @include respond(mobile) {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  // TITLE SECTION
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+
+    @include respond(mobile) {
+      gap: 4px;
+    }
+
+    .sport-list {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+  }
+
+  // VIDEO SECTION
+  .video {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+
+    @include respond(mobile) {
+      gap: 12px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 12px;
+      overflow: hidden;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 12px;
+      }
+    }
+  }
+
+  // INSTRUCTIONS SECTION
+  .instructions {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    align-self: stretch;
+
+    @include respond(mobile) {
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      flex: 1 0 0;
+
+      @include respond(mobile) {
+        gap: 12px;
+        align-self: stretch;
+      }
+
+      .instruction-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        align-self: stretch;
+        list-style-position: inside; //<ol> <li> inside the block
+
+        @include respond(mobile) {
+          gap: 5px;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      flex: 1 0 0;
+
+      @include respond(mobile) {
+        gap: 12px;
+        align-self: stretch;
+      }
+    }
+  }
+
+  // RELATED LOCATIONS SECTION
+  .related-locations {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

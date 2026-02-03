@@ -198,8 +198,142 @@
     }
   }
 
+  // GALLERY IMAGES
+  .gallery-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    @include respond(mobile) {
+      gap: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 300px;
+      gap: 20px;
+
+      @include respond(mobile) {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+          box-shadow: 0 10px 25px 0 rgba(54, 95, 104, 0.15);
+        }
+
+        &:nth-child(n + 6) {
+          display: none;
+
+          @include respond(mobile) {
+            display: block;
+          }
+        }
+
+        @include respond(mobile) {
+          flex: 0 0 88%;
+          height: 260px;
+          scroll-snap-align: center;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        &.is-hidden {
+          display: none;
+        }
+      }
+
+      .gallery-item--large {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .gallery-view-all {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        display: inline-flex;
+        padding: 12px 20px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        color: $Text-Light;
+        border-radius: 8px;
+        background: $Primary;
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
+
+        @include respond(mobile) {
+          display: none;
+        }
+      }
+    }
+
+    .gallery-dots {
+      display: none;
+
+      @include respond(mobile) {
+        display: flex;
+        align-items: center;
+        margin-top: 14px;
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+          width: 1px;
+          height: 1px;
+          padding: 5px;
+          border-radius: 6px;
+          border: 1px solid #140f50;
+          background: transparent;
+          cursor: pointer;
+        }
+
+        &.slick-active {
+          border-radius: 20px;
+          border: 1px solid #140f50;
+
+          button {
+            background: #140f50;
+          }
+        }
+      }
+    }
+  }
+
   // EQUIPMENT LIST
-  .brand-main-1 {
+  .brand-main-location-cpt {
     .brand-inner {
       display: flex;
       flex-direction: column;
@@ -227,8 +361,8 @@
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           position: relative;
           &:hover {
-            box-shadow: 0 10px 25px 0 rgba(54, 95, 104, 0.1);
-            transform: translate(6px, -6px) scale(1.02);
+            box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
             cursor: pointer;
           }
 
@@ -293,36 +427,6 @@
             width: 165px;
           }
         }
-      }
-    }
-  }
-
-  // GALLERY IMAGES
-  .gallery-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 300px;
-      gap: 20px;
-
-      .gallery-item {
-        overflow: hidden;
-        border-radius: 16px;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-
-      .gallery-item--large {
-        grid-column: span 2;
-        grid-row: span 2;
       }
     }
   }

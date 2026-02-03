@@ -10,7 +10,6 @@ body {
   margin-top: 108px;
   &.overflow-hidden {
     overflow: hidden;
-    touch-action: none; // Prevents scrolling on mobile devices
   }
 
   @include respond(mobile) {

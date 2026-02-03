@@ -128,40 +128,56 @@
         </div>
 
         <!-- GALLERY IMAGES -->
-        <?php if (have_rows('gallery_flexible')): ?>
+        <?php
+        $gallery = get_field('gallery');
+        $max_visible = 5;
+
+        if ($gallery && is_array($gallery)):
+        ?>
             <div class="gallery-inner">
                 <h4 class="heading-4">Gallery Images</h4>
 
-                <div class="gallery">
-                    <?php while (have_rows('gallery_flexible')): the_row();
-                        $image = get_sub_field('image');
-                        if (!$image) continue;
-
+                <div class="gallery js-gallery js-gallery-scroll">
+                    <?php foreach ($gallery as $index => $image): ?>
+                        <?php
                         $url    = $image['url'];
+                        $alt    = $image['alt'];
                         $width  = $image['width'];
                         $height = $image['height'];
-                        $alt    = $image['alt'];
-                    ?>
-                        <?php if (get_row_layout() === 'large_image'): ?>
+                        ?>
+                        <?php if ($index === 0): ?>
+                            <!-- LARGE IMAGE -->
                             <a href="<?= esc_url($url); ?>"
-                                class="gallery-item gallery-item--large">
+                                class="gallery-item gallery-item--large js-open-lightbox"
+                                data-index="<?= $index; ?>"
+                                data-pswp-width="<?= esc_attr($width); ?>"
+                                data-pswp-height="<?= esc_attr($height); ?>">
                                 <img src="<?= esc_url($url); ?>" alt="<?= esc_attr($alt); ?>">
+                                <span class="gallery-view-all button-small-f">
+                                    <img src="<?= get_template_directory_uri(); ?>/assets/icons/Image.svg" alt="" class="gallery-view-all-icon">
+                                    View All Photo
+                                </span>
                             </a>
-
-                        <?php elseif (get_row_layout() === 'vertical_image'): ?>
+                        <?php else: ?>
+                            <!-- OTHER IMAGES -->
                             <a href="<?= esc_url($url); ?>"
-                                class="gallery-item gallery-item--vertical">
+                                class="gallery-item gallery-item--vertical"
+                                data-index="<?= $index; ?>"
+                                data-pswp-width="<?= esc_attr($width); ?>"
+                                data-pswp-height="<?= esc_attr($height); ?>">
                                 <img src="<?= esc_url($url); ?>" alt="<?= esc_attr($alt); ?>">
                             </a>
                         <?php endif; ?>
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 </div>
+
+                <!-- MOBILE DOTS -->
+                <ul class="gallery-dots js-gallery-dots"></ul>
             </div>
         <?php endif; ?>
 
-
         <!-- EQUIPMENT LIST -->
-        <div id="equipment" class="brand-main-1">
+        <div id="equipment" class="brand-main-location-cpt">
             <div class="brand-inner">
                 <h4 class="heading-4">Equipment List</h4>
                 <ul class="brands">
@@ -202,6 +218,5 @@
         </div>
     </section>
 </main>
-
 
 <?php get_footer(); ?>

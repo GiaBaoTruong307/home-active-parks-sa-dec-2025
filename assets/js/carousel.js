@@ -1,10 +1,13 @@
 jQuery(document).ready(function ($) {
   // Feature Cards Slider
-  $(".feature-cards").slick({
+  const $featureCards = $(".feature-cards");
+  const cardCount = $featureCards.children().length;
+
+  $featureCards.slick({
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3,
-    dots: true,
+    dots: cardCount > 3, // Show dots only if more than 3 cards
     arrows: false,
     responsive: [
       {
@@ -12,6 +15,7 @@ jQuery(document).ready(function ($) {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          dots: cardCount > 2,
         },
       },
       {
@@ -19,6 +23,7 @@ jQuery(document).ready(function ($) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: cardCount > 1,
         },
       },
       {
@@ -26,6 +31,7 @@ jQuery(document).ready(function ($) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: cardCount > 1,
         },
       },
     ],
@@ -37,10 +43,10 @@ jQuery(document).ready(function ($) {
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 0, // Không delay
-    speed: 4000, // Tốc độ chạy (càng nhỏ càng nhanh)
-    cssEase: "linear", // Chạy đều không giật
-    arrows: false, // Ẩn nút prev/next
+    autoplaySpeed: 0,
+    speed: 4000,
+    cssEase: "linear",
+    arrows: false,
     responsive: [
       {
         breakpoint: 1024,

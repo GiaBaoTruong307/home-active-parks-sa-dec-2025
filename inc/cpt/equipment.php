@@ -18,3 +18,15 @@ function equipment_post_type()
     ));
 }
 add_action('init', 'equipment_post_type');
+
+function equipment_sports_taxonomy()
+{
+    register_taxonomy('sports', 'equipment', array(
+        'label' => 'Sports',
+        'public' => true,
+        'hierarchical' => true,
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'sports'),
+    ));
+}
+add_action('init', 'equipment_sports_taxonomy');

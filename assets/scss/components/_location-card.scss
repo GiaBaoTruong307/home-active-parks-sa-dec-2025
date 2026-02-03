@@ -1,0 +1,97 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.feature-cards {
+  align-self: stretch;
+
+  @include respond(mobile) {
+    order: 2;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 5px 0 rgba(28, 36, 51, 0.1);
+    margin: 40px 15px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    &:hover {
+      box-shadow: 0 10px 25px 0 rgba(54, 95, 104, 0.1);
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+
+    @include respond(mobile) {
+      margin: 35px 0;
+    }
+
+    &-image {
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 4/3;
+      }
+    }
+
+    &-content {
+      display: flex;
+      padding: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .card-location {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 4px;
+
+        img {
+          width: 16px;
+          height: 16px;
+          aspect-ratio: 1/1;
+          fill: $Text-Primary;
+        }
+      }
+
+      .card-description {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+        // Text Truncate
+        > span {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: $Text-Secondary;
+          font-size: 14px;
+          line-height: 22px;
+        }
+      }
+
+      .card-divider {
+        width: 100%;
+        height: 1px;
+        background-color: #e0e0e0;
+        margin: 20px 0;
+      }
+    }
+
+    .link {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+    }
+
+    a {
+      position: relative;
+      z-index: 11;
+    }
+  }
+}
