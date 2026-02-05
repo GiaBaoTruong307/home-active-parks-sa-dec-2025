@@ -9,4 +9,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <?php get_template_part('template-parts/header/site-header'); ?>
+    <?php get_template_part('template-parts/layout/header/site-header'); ?>
+
+    <main>

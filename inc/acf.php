@@ -37,6 +37,6 @@ if (function_exists('acf_add_options_page')) {
         'capability'  => 'edit_posts', // (manage_options, edit_posts: Admin + Editor, edit_pages)
         'redirect'    => false,
         'position'    => 60,
-        'icon_url'    => 'dashicons-editor-kitchensink',
+        'icon_url'    => 'dashicons-admin-generic',
     ]);
 }

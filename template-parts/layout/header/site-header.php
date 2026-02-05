@@ -11,11 +11,7 @@
              </div>
 
              <!-- NAVIGATION MENU -->
-             <nav class="header-navigation">
-                 <ul>
-                     <?php get_template_part('template-parts/header/menu'); ?>
-                 </ul>
-             </nav>
+             <?php get_template_part('template-parts/layout/header/menu'); ?>
 
              <!-- ICONS -->
              <?php
@@ -37,8 +33,12 @@
  <!-- MENU OVERLAY -->
  <div class="menu-overlay"></div>
  <!-- MENU MOBILE -->
- <nav class="toggleMenuMobile">
-     <ul>
-         <?php get_template_part('template-parts/header/menu'); ?>
-     </ul>
- </nav>
+ <div class="toggleMenuMobile">
+     <div class="menu-header">
+         <p>Active Parks</p>
+         <button class="close-menu-btn">
+             <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/clear-icon.svg" alt="Close Menu">
+         </button>
+     </div>
+     <?php get_template_part('template-parts/layout/header/menu'); ?>
+ </div>

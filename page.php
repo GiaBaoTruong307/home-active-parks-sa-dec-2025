@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<main>
-    This is the content of <?php the_title(); ?> page.
-</main>
+This is the content of <?php the_title(); ?> page.
 
 <?php get_footer(); ?>

@@ -17,4 +17,11 @@ jQuery(document).ready(function ($) {
     $(".menu-overlay").removeClass("open");
     $("body").removeClass("overflow-hidden");
   });
+
+  // Close menu mobile when clicking close button
+  $(".close-menu-btn").click(function () {
+    $(".toggleMenuMobile").removeClass("open");
+    $(".menu-overlay").removeClass("open");
+    $("body").removeClass("overflow-hidden");
+  });
 });

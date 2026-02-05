@@ -8,13 +8,13 @@ function equipment_post_type()
         'public' => true,
         'show_in_rest' => true,
         'labels' => array(
-            'name' => 'Equipment',
-            'add_new_item' => 'Add New Equipment',
-            'edit_item' => 'Edit Equipment',
-            'all_items' => 'All Equipment',
+            'name' => 'Equipments',
+            'all_items' => 'All Equipments',
+            'add_new_item' => 'Add New',
+            'edit_item' => 'Edit',
             'singular_name' => 'Equipment',
         ),
-        'menu_icon' => 'dashicons-universal-access',
+        'menu_icon' => 'dashicons-awards',
     ));
 }
 add_action('init', 'equipment_post_type');

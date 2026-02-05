@@ -8,10 +8,10 @@ function location_post_type()
         'public' => true,
         'show_in_rest' => true,
         'labels' => array(
-            'name' => 'Location',
-            'add_new_item' => 'Add New Location',
-            'edit_item' => 'Edit Location',
+            'name' => 'Locations',
             'all_items' => 'All Locations',
+            'add_new_item' => 'Add New',
+            'edit_item' => 'Edit',
             'singular_name' => 'Location',
         ),
         'menu_icon' => 'dashicons-location',

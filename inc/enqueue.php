@@ -13,7 +13,7 @@ function theme_enqueue_assets()
     // SLICK CSS
     wp_enqueue_style(
         'slick-css',
-        get_theme_file_uri('/assets/css/slick.css'),
+        get_theme_file_uri('/lib/slick/slick.css'),
         [],
         '1.8.1'
     );
@@ -21,17 +21,9 @@ function theme_enqueue_assets()
     // SLICK THEME CSS
     wp_enqueue_style(
         'slick-theme-css',
-        get_theme_file_uri('/assets/css/slick-theme.css'),
+        get_theme_file_uri('/lib/slick/slick-theme.css'),
         ['slick-css'],
         '1.8.1'
-    );
-
-    // PHOTOSWIPE CSS
-    wp_enqueue_style(
-        'photoswipe',
-        get_theme_file_uri('/assets/vendor/photoswipe/photoswipe.css'),
-        [],
-        '5.4.4'
     );
 
     // SLICK JS
@@ -43,38 +35,47 @@ function theme_enqueue_assets()
         true
     );
 
+    // CAROUSEL JS
+    wp_enqueue_script(
+        'carousel-js',
+        get_theme_file_uri('/lib/slick/carousel.js'),
+        ['jquery', 'slick-js'],
+        filemtime(get_theme_file_path('/lib/slick/carousel.js')),
+        true
+    );
+
+    // PHOTOSWIPE CSS
+    wp_enqueue_style(
+        'photoswipe',
+        get_theme_file_uri('/lib/photoswipe/photoswipe.css'),
+        [],
+        '5.4.4'
+    );
+
     // PHOTOSWIPE JS (UMD)
     wp_enqueue_script(
         'photoswipe',
-        get_theme_file_uri('/assets/vendor/photoswipe/photoswipe.umd.min.js'),
+        get_theme_file_uri('/lib/photoswipe/photoswipe.umd.min.js'),
         [],
         '5.4.4',
         true
     );
 
+    // PHOTOSWIPE LIGHTBOX JS
     wp_enqueue_script(
         'photoswipe-lightbox',
-        get_theme_file_uri('/assets/vendor/photoswipe/photoswipe-lightbox.umd.min.js'),
+        get_theme_file_uri('/lib/photoswipe/photoswipe-lightbox.umd.min.js'),
         ['photoswipe'],
         '5.4.4',
-        true
-    );
-
-    // CAROUSEL JS
-    wp_enqueue_script(
-        'carousel-js',
-        get_theme_file_uri('/assets/js/carousel.js'),
-        ['jquery', 'slick-js'],
-        filemtime(get_theme_file_path('/assets/js/carousel.js')),
         true
     );
 
     // GALLERY JS
     wp_enqueue_script(
         'gallery-js',
-        get_theme_file_uri('/assets/js/gallery.js'),
+        get_theme_file_uri('/lib/photoswipe/gallery.js'),
         ['jquery', 'photoswipe-lightbox'],
-        filemtime(get_theme_file_path('/assets/js/gallery.js')),
+        filemtime(get_theme_file_path('/lib/photoswipe/gallery.js')),
         true
     );
 

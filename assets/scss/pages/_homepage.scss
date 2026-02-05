@@ -252,15 +252,21 @@
   .partners {
     width: 100%;
 
-    .partner-logo {
-      width: 204px;
-      height: 41px;
-      flex-shrink: 0;
-
+    .partner {
       @include respond(mobile) {
-        width: 115px;
-        height: 28px;
-        aspect-ratio: 115/28;
+        width: 150px !important;
+      }
+
+      .partner-logo {
+        width: 204px;
+        height: 41px;
+        flex-shrink: 0;
+
+        @include respond(mobile) {
+          width: 115px;
+          height: 28px;
+          aspect-ratio: 115/28;
+        }
       }
     }
   }

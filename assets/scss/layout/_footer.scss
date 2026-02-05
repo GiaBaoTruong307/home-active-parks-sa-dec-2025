@@ -155,25 +155,29 @@ footer {
         }
       }
 
-      .footer-navigation ul {
-        display: flex;
-        align-items: flex-start;
-        gap: 60px;
-        list-style: none;
+      .footer-navigation {
+        width: 100%;
 
-        @include respond(mobile) {
-          justify-content: center;
-          align-items: center;
-          gap: 20px;
-          align-self: stretch;
-        }
+        ul {
+          display: flex;
+          align-items: flex-start;
+          gap: 60px;
+          list-style: none;
 
-        li a {
-          text-decoration: none;
-          color: $Line;
-          padding-bottom: 2px;
-          &:hover {
-            border-bottom: 2px solid $Line;
+          @include respond(mobile) {
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            align-self: stretch;
+          }
+
+          li a {
+            text-decoration: none;
+            color: $Line;
+            padding-bottom: 2px;
+            &:hover {
+              border-bottom: 2px solid $Line;
+            }
           }
         }
       }

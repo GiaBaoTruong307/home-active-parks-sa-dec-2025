@@ -1,5 +1,5 @@
 <?php
-define('THEME_VERSION', '1.0.6');
+define('THEME_VERSION', '1.0.1');
 
 require get_template_directory() . '/inc/enqueue.php';
 require get_template_directory() . '/inc/setup.php';

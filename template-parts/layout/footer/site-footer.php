@@ -47,7 +47,7 @@
 
                 <nav class="footer-navigation">
                     <ul>
-                        <?php get_template_part('template-parts/footer/menu'); ?>
+                        <?php get_template_part('template-parts/layout/footer/menu'); ?>
                     </ul>
                 </nav>
             </div>
@@ -63,7 +63,7 @@
 
 
             <ul class="footer-links">
-                <?php get_template_part('template-parts/footer/copyright-links'); ?>
+                <?php get_template_part('template-parts/layout/footer/copyright-links'); ?>
             </ul>
         </div>
     </div>

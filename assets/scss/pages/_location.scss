@@ -72,8 +72,6 @@
       background: $Primary;
       color: #fff;
       font-weight: 500;
-      opacity: 0;
-      transform: translateY(10px);
       transition: all 0.35s ease;
 
       img {
@@ -102,11 +100,6 @@
         &::after {
           opacity: 1;
         }
-      }
-
-      .card-btn {
-        opacity: 1;
-        transform: translateY(0);
       }
     }
   }
@@ -137,11 +130,6 @@
     .card {
       &-image {
         height: 180px;
-      }
-
-      .card-btn {
-        opacity: 1;
-        transform: none;
       }
     }
   }

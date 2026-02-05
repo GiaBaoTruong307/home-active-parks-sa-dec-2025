@@ -23,10 +23,6 @@
       transform: scale(1.02);
     }
 
-    @include respond(mobile) {
-      margin: 35px 0;
-    }
-
     &-image {
       width: 100%;
 

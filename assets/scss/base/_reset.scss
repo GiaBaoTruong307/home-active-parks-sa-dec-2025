@@ -15,8 +15,9 @@ html {
 }
 
 .container {
-  max-width: 1290px;
+  max-width: 1320px;
   margin: 0 auto;
+  padding: 0 15px;
 
   @include respond(mobile) {
     max-width: 350px;
