@@ -1,0 +1,94 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// Search Page Styles
+.search {
+  padding: 60px 0;
+  min-height: 60vh;
+
+  @include respond(mobile) {
+    padding: 80px 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: $Primary;
+
+    @include respond(mobile) {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+  }
+
+  // Search Results List
+  .search-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 20px;
+      margin-bottom: 15px;
+      background: $Text-Light;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+      }
+
+      a {
+        font-size: 18px;
+        font-weight: 600;
+        color: $Text-Primary;
+        text-decoration: none;
+        display: block;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $Primary;
+        }
+
+        @include respond(mobile) {
+          font-size: 20px;
+        }
+      }
+
+      .post-type {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 4px 12px;
+        background: $Light-Grey;
+        color: $Text-Secondary;
+        font-size: 12px;
+        border-radius: 4px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  // No Results Message
+  p {
+    font-size: 16px;
+    color: $Text-Secondary;
+    padding: 40px 20px;
+    text-align: center;
+    background: $Light-Grey;
+    border-radius: 8px;
+
+    @include respond(mobile) {
+      font-size: 18px;
+      padding: 60px 20px;
+    }
+  }
+}

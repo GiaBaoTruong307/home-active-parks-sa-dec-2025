@@ -21,10 +21,19 @@
                 if ($searchIcon || $menuIcon) { ?>
                  <div class="search-container">
                      <img src="<?php echo esc_url($searchIcon['url']); ?>" class="search-icon" alt="Search Icon Header">
+
                      <div class="toggleSearchBox">
-                         <input type="text" class="search-box" placeholder="Search...">
+                         <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+                             <input
+                                 type="search"
+                                 class="search-box"
+                                 placeholder="Search..."
+                                 value="<?php echo get_search_query(); ?>"
+                                 name="s">
+                         </form>
                      </div>
                  </div>
+
                  <img src="<?php echo esc_url($menuIcon['url']); ?>" class="menu-icon" alt="Menu Icon Header">
              <?php } ?>
          </div>
