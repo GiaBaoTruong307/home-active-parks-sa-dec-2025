@@ -15,7 +15,14 @@
     <?php get_template_part('template-parts/pages/homepage/benefit'); ?>
 
     <!-- BRAND -->
-    <?php get_template_part('template-parts/pages/homepage/brand'); ?>
+    <!-- <?php get_template_part('template-parts/pages/homepage/brand'); ?> -->
+
+    <?php
+    $content = get_the_content();
+    if (has_shortcode($content, 'ap_equipment_list')) {
+        echo do_shortcode($content);
+    }
+    ?>
 
     <!-- PARTNERS-->
     <?php get_template_part('template-parts/pages/homepage/partner'); ?>

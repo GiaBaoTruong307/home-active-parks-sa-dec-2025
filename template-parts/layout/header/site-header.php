@@ -22,6 +22,7 @@
                  <div class="search-container">
                      <img src="<?php echo esc_url($searchIcon['url']); ?>" class="search-icon" alt="Search Icon Header">
 
+                     <!-- SEARCH DEFAULT WORDPRESS -->
                      <div class="toggleSearchBox">
                          <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
                              <input

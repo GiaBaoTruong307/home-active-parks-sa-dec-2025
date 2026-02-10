@@ -88,5 +88,4 @@ function theme_enqueue_assets()
         true
     );
 }
-
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
